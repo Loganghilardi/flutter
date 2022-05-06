@@ -1,19 +1,26 @@
+import 'package:firstapplicationeisi/Controller/MessageController.dart';
 import 'package:firstapplicationeisi/Fonctions/FirestoreHelper.dart';
 import 'package:firstapplicationeisi/View/AllUsers.dart';
 import 'package:firstapplicationeisi/View/MyUsers.dart';
+import 'package:firstapplicationeisi/library/constant.dart';
 import 'package:firstapplicationeisi/main.dart';
+import 'package:firstapplicationeisi/model/MyProfil.dart';
+import 'package:firstapplicationeisi/model/Utilisateur.dart';
+import 'package:firstapplicationeisi/modelView/ZoneTexte.dart';
 import 'package:flutter/material.dart';
 
 class Conversation extends StatefulWidget {
-      const Conversation({Key? key}) : super(key: key);
-
+  late MyProfil partner;
+  Conversation({required this.partner});
   @override
-  State<Conversation> createState() => ConversationState();
+  State<Conversation> createState(){
+    return ConversationState();
+  }
 }
 
 class ConversationState extends State<Conversation> {
-
   int selected = 0;
+
   PageController controller = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
@@ -54,9 +61,12 @@ class ConversationState extends State<Conversation> {
   }
 
   Widget bodyPage() {
-    return Column(children: [
-      //NOm et prénom
-      Row(children: [Container(child: Text('Nom'))])
-    ]);
+
+    return Container(
+      child: Column(children: [
+        ZoneText(widget.partner, Myprofil),
+        Expanded(child: Messagecontroller(Myprofil, widget.partner)),
+      ],)
+    );
   }
 }

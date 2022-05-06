@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firstapplicationeisi/model/MyProfil.dart';
-import 'package:firstapplicationeisi/model/Utilisateur.dart';
 
 class FirestoreHelper {
   //Attributs
@@ -66,7 +65,7 @@ class FirestoreHelper {
     return urlChemin;
   }
 
-  sendMessage(String texte, Utilisateur user, MyProfil moi) {
+  sendMessage(String texte, MyProfil user, MyProfil moi) {
     DateTime date = DateTime.now();
     Map<String, dynamic> map = {
       'from': moi.uid,
@@ -86,7 +85,7 @@ class FirestoreHelper {
   }
 
   Map<String, dynamic> getConversation(
-      String sender, Utilisateur partenaire, String texte, DateTime date) {
+      String sender, MyProfil partenaire, String texte, DateTime date) {
     Map<String, dynamic> map = partenaire.toMap();
     map['idmoi'] = sender;
     map['lastmessage'] = texte;

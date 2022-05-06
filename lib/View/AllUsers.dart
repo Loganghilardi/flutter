@@ -39,26 +39,27 @@ class AllUsersState extends State<AllUsers> {
                   if (users.uid == Myprofil.uid) {
                     return Container();
                   } else {
-                    return Card(
-                      elevation: 5.0,
-                      color: Colors.amber,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      child: ListTile(
+                    return InkWell(
+                        child: Card(
+                          elevation: 5.0,
+                          color: Colors.amber,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: ListTile(
+                            leading: ImageRond(
+                              image: users.image,
+                              size: 60,
+                            ),
+                            title: Text("${users.prenom}"),
+                            subtitle: Text("${users.mail}"),
+                          ),
+                        ),
                         onTap: () {
-                          print("tapped");
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return const Conversation();
+                            return Conversation(partner: users);
                           }));
-                        },
-                        //Image
-                        leading: ImageRond(image: users.image, size: 60),
-
-                        title: Text("${users.prenom} ${users.nom}"),
-                        subtitle: Text("${users.mail}"),
-                      ),
-                    );
+                        });
                   }
                 });
           }
