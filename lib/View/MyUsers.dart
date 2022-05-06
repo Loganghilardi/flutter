@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:firstapplicationeisi/Fonctions/FirestoreHelper.dart';
 import 'package:firstapplicationeisi/modelView/ImageRond.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firstapplicationeisi/library/lib.dart';
 import 'package:file_picker/file_picker.dart';
@@ -54,7 +55,7 @@ class MyUsersState extends State<MyUsers>{
         context: context,
         barrierDismissible: false,
         builder: (context){
-          if(Platform.isIOS){
+          if(defaultTargetPlatform == TargetPlatform.iOS){
             return CupertinoAlertDialog(
               title: const Text("Souhaitez- vous avoir cette photo de profil?"),
               content : Image.memory(bytesImages!),
@@ -110,11 +111,12 @@ class MyUsersState extends State<MyUsers>{
                               lienImage = value;
                               Myprofil.image = value;
                             });
-                          });
-                          Map<String,dynamic> map ={
-                            "IMAGE": lienImage,
+                              Map<String,dynamic> map ={
+                            "IMAGE": value,
                           };
                           FirestoreHelper().updateUser(Myprofil.uid, map);
+                          });
+                        
                           Navigator.pop(context);
 
                         },
