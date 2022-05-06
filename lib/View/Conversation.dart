@@ -5,7 +5,6 @@ import 'package:firstapplicationeisi/View/MyUsers.dart';
 import 'package:firstapplicationeisi/library/constant.dart';
 import 'package:firstapplicationeisi/main.dart';
 import 'package:firstapplicationeisi/model/MyProfil.dart';
-import 'package:firstapplicationeisi/model/Utilisateur.dart';
 import 'package:firstapplicationeisi/modelView/ZoneTexte.dart';
 import 'package:flutter/material.dart';
 
