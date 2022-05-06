@@ -26,14 +26,5 @@ class Utilisateur {
   }
 
 //Méthodes
-  Map<String, dynamic> toMap() {
-    Map<String, dynamic> map;
-    return map = {
-      'NOM': nom,
-      'PRENOM': prenom,
-      'IMAGE': avatar,
-      'MAIL': mail,
-      'NAISSANCE': naissance,
-    };
-  }
+
 }
