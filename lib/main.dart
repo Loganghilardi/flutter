@@ -2,14 +2,28 @@ import 'dart:io';
 
 import 'package:firstapplicationeisi/Fonctions/FirestoreHelper.dart';
 import 'package:firstapplicationeisi/View/Dashboard.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'library/lib.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
+  if ((defaultTargetPlatform == TargetPlatform.iOS) || (defaultTargetPlatform == TargetPlatform.android)){
+    await Firebase.initializeApp();
+  }
+  else
+    {
+      await Firebase.initializeApp(
+          options: const FirebaseOptions(
+              apiKey: "AIzaSyCxxHScjKjUf6Gl61GFGYimx8yOyYsSLUI",
+              appId: "1:563140356020:web:d8b171f6bcd306110f34e1",
+              messagingSenderId: "563140356020",
+              projectId: "firstapp2-67b13",
+              storageBucket: "firstapp2-67b13.appspot.com"
+          )
+      );
+    }
   runApp(const MyApp());
 }
 

@@ -1,5 +1,6 @@
 
 
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,7 +13,6 @@ class FirestoreHelper {
   final auth = FirebaseAuth.instance;
   final fireUser = FirebaseFirestore.instance.collection("Users");
   final storage = FirebaseStorage.instance;
-
 
 
   //Méthodes
