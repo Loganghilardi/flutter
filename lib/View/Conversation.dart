@@ -19,9 +19,8 @@ class Conversation extends StatefulWidget {
 }
 
 class ConversationState extends State<Conversation> {
-  int selected = 0;
 
-  PageController controller = PageController(initialPage: 0);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,21 +41,7 @@ class ConversationState extends State<Conversation> {
         ],
       ),
       body: bodyPage(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selected,
-        onTap: (newValue) {
-          setState(() {
-            selected = newValue;
-            controller.jumpToPage(newValue);
-          });
-        },
-        items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: "Utilisateurs"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings), label: "Paramètres")
-        ],
-      ),
+      
     );
   }
 

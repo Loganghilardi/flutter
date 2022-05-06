@@ -33,7 +33,7 @@ class MessagecontrollerState extends State<Messagecontroller> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: firestoreHelper()
+        stream: FirestoreHelper()
             .fire_message
             .orderBy('envoiMessage', descending: true)
             .snapshots(),
@@ -62,8 +62,6 @@ class MessagecontrollerState extends State<Messagecontroller> {
           }
         });
   }
-
-  firestoreHelper() {}
 }
 
 

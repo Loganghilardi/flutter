@@ -74,14 +74,9 @@ class FirestoreHelper {
       'envoiMessage': date
     };
     String idDate = date.microsecondsSinceEpoch.toString();
-
-    addMessage(Map<String, dynamic> map, String uid) {
-      fire_message.doc(uid).set(map);
-    }
-
-    addConversation(Map<String, dynamic> map, String uid) {
-      fire_conversation.doc(uid).set(map);
-    }
+    addMessage(map, getMessageRef(moi.uid, user.uid, idDate));
+    addConversation(getConversation(moi.uid, user, texte, date), moi.uid);
+    addConversation(getConversation(user.uid, moi, texte, date), user.uid);
   }
 
   Map<String, dynamic> getConversation(
@@ -104,5 +99,13 @@ class FirestoreHelper {
     }
     resultat = resultat + date;
     return resultat;
+  }
+
+  addMessage(Map<String, dynamic> map, String uid) {
+    fire_message.doc(uid).set(map);
+  }
+
+  addConversation(Map<String, dynamic> map, String uid) {
+    fire_conversation.doc(uid).set(map);
   }
 }

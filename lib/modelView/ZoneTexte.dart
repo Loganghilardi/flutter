@@ -1,5 +1,6 @@
 
 
+import 'package:firstapplicationeisi/Fonctions/FirestoreHelper.dart';
 import 'package:firstapplicationeisi/model/MyProfil.dart';
 import 'package:flutter/material.dart';
 
@@ -43,8 +44,8 @@ class ZoneTextState extends State<ZoneText> {
   _sendBouttonpressed() {
     if (_textEditingController != null && _textEditingController != "") {
       String text = _textEditingController.text;
-      print('enregistrement');
-      firestoreHelper().sendMessage(text, widget.partenaire, widget.moi);
+      FirestoreHelper().sendMessage(text, widget.partenaire, widget.moi);
+  
       setState(() {
         _textEditingController.text = '';
       });
@@ -57,6 +58,4 @@ class ZoneTextState extends State<ZoneText> {
     //envoie message dans firebase
     print(_textEditingController.text);
   }
-
-  firestoreHelper() {}
 }
